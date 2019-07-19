@@ -1,5 +1,6 @@
 <?php
-    $playerData = file_get_contents('player.json');
+    // $playerData = file_get_contents('player.json');
+    $playerData = file_get_contents('https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?t=Chelsea');
     $player = json_decode($playerData, true);
 
     $player = $player["player"];
