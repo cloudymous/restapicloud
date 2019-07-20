@@ -2,8 +2,11 @@
     // $playerData = file_get_contents('player.json');
     $playerData = file_get_contents('https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?t=Chelsea');
     $player = json_decode($playerData, true);
-
     $player = $player["player"];
+
+    $teamData = file_get_contents('https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=English%20Premier%20League');
+    $team = json_decode($teamData, true);
+    $team = $team["teams"];
 
 ?>
 <!doctype html>
@@ -31,9 +34,13 @@
     </nav>
 
     <div class="container">
-        <div class="row mx-auto">
-            <h1>Player List<h1>
-        </div>
+    <select class="custom-select mt-5" id="list-team" style="width: 500px">
+            <option selected>Open this select menu</option>
+            <?php foreach($team as $teams) : ?>
+            <option value="<?= $teams["idTeam"] ?>"><?= $teams[strTeam] ?></option>
+            <?php endforeach; ?>
+        </select>
+        <h1 class="font-weight-bold text-center mt-3 mb-2">Player List</h1>
         <div class="row">
             <?php foreach($player as $row) : ?>
             <div class="col-sm-3 style="max-width: 970px;">
