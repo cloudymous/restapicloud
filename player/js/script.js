@@ -1,5 +1,20 @@
-$.getJSON('player.json', function(data){
-    let player = data.player;
+$.getJSON('https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=English%20Premier%20League', function(dataTeam){
+    
+    var team = dataTeam.teams;
+    console.log(team);
+
+    $.each(team, function(t, teams){
+        $('#list-team').append(`
+        <option value="`+ teams.idTeam+`">`+ teams.strTeam +`</option>
+    `);
+
+    });
+});
+
+$.getJSON('https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?t=Chelsea', function(data){
+
+    var player = data.player;
+    console.log(player);
 
     $.each(player, function(i, data){
         $('#list-player').append(`
