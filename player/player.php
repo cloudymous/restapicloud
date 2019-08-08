@@ -37,7 +37,7 @@
     <select class="custom-select mt-5" id="list-team" style="width: 500px">
             <option selected>Open this select menu</option>
             <?php foreach($team as $teams) : ?>
-            <option value="<?= $teams["idTeam"] ?>"><?= $teams[strTeam] ?></option>
+            <option value="<?= $teams["idTeam"] ?>"><?= $teams["strTeam"] ?></option>
             <?php endforeach; ?>
         </select>
         <h1 class="font-weight-bold text-center mt-3 mb-2">Player List</h1>
